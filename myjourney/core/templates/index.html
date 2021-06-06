@@ -1,0 +1,71 @@
+{% load i18n %}
+<!doctype html>
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+<html lang="{{ LANGUAGE_CODE|default:'en-us' }}" dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr,auto' }}">
+    <head>
+        <meta charset="utf-8">
+        <title>{% translate "The install worked successfully! Congratulations!" %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            html {
+                line-height: 1.15;
+                height: 100%;
+            }
+            a {
+                color: #f2ce5e;
+            }
+            .accent {
+                color: #836953;
+            }
+            .accent2 {
+                color: #ffd800;
+            }
+
+            body {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                color: #444;
+                {% comment %} background-color: #fff; {% endcomment %}
+            }
+            main {
+                display: flex;
+                flex-flow: column;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+            }
+            main h1 {
+                font-size: 60px;
+                
+            }
+            main h2 {
+                position: relative;
+                margin-bottom: 50px;
+            }
+            main h2::after {
+                content: '';
+                position: absolute;
+                width: 150px;
+                height: 1px;
+                left: 0;
+                right: 0;
+                margin: auto;
+                bottom: -50px;
+                border-bottom: 1px dashed #836953;
+            }
+            main h2 > span {
+                font-size: 30px;
+            }
+        </style>
+    </head>
+    <body>
+      <header></header>
+      <main>
+        <h2>Welcome to <span class="accent2"> MAMIEO </span> Journey</h2>
+        <h1 class="accent">COMMING SOON ...</h1>
+      </main>
+      <footer></footer>
+    </body>
+</html>
