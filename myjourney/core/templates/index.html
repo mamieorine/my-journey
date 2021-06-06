@@ -15,7 +15,7 @@
                 color: #f2ce5e;
             }
             .accent {
-                color: #836953;
+                color: #ff878d;
             }
             .accent2 {
                 color: #ffd800;
@@ -27,45 +27,105 @@
                 flex-direction: column;
                 justify-content: space-between;
                 color: #444;
+                margin: 0;
                 {% comment %} background-color: #fff; {% endcomment %}
             }
             main {
-                display: flex;
-                flex-flow: column;
-                align-items: center;
-                justify-content: center;
+                background-color: #eee;
                 height: 100%;
             }
             main h1 {
                 font-size: 60px;
-                
             }
-            main h2 {
+
+            .row {
+                display: flex;
+                height: 100%;
+                justify-content: space-between;
+            }
+            .column {
+                display: flex;
+                flex-flow: column;
+                width: 50%;
+            }
+            .profile-image {
+                {% load static %}
+                background-image: url("{% static '/girl.png' %}");
+                background-position: center bottom;
+                background-size: cover;
+                max-height: 870px;
+            }
+            .detail {
                 position: relative;
-                margin-bottom: 50px;
+                padding: 30px 100px 0 30px;
+                background-color: #eee;
             }
-            main h2::after {
+            .detail::before {
                 content: '';
                 position: absolute;
-                width: 150px;
-                height: 1px;
-                left: 0;
+                {% load static %}
+                background-image: url("{% static '/bg.png' %}");
+                background-position: center center;
+                background-size: cover;
+                max-height: 870px;
+                width: 80%;
+                height: 70%;
                 right: 0;
-                margin: auto;
-                bottom: -50px;
-                border-bottom: 1px dashed #836953;
+                bottom: 0;
+                z-index: 0;
             }
-            main h2 > span {
-                font-size: 30px;
+            .detail > .container {
+                padding: 40px 80px;
+                background-color: #fff;
+                z-index: 1;
+                height: 60%;
+                margin-top: 5%;
+            }
+            .detail h1 {
+                position: relative;
+                padding: 10px 40px;
+            }
+            .detail h1::before {
+                content: '';
+                position: absolute;
+                background-color: pink;
+                width: 6px;
+                height: 80%;
+                left: 0;
+                top: 10%;
+                z-index: 0;
+            }
+            .caption, p {
+                font-size: 24px;
+            }
+            p {
+                font-size: 20px;
+                line-height: 1.6;
+            }
+
+            .detail .footer {
+                margin: 40px 0 20px;
+            }
+            .text-right {
+                text-align: right;
             }
         </style>
     </head>
     <body>
-      <header></header>
       <main>
-        <h2>Welcome to <span class="accent2"> MAMIEO </span> Journey</h2>
-        <h1 class="accent">COMMING SOON ...</h1>
+        <div class="row">
+            <div class="column profile-image">
+                
+            </div>
+            <div class="column detail">
+                <div class="container">
+                    <h1>Hello you, </h1>
+                    <p class="caption">Welcome to my journey.</p>
+                    <p>Lorem remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                    <p class="footer accent text-right">MAMIEO.</p>
+                </div>
+            </div>
+        </div>
       </main>
-      <footer></footer>
     </body>
 </html>
