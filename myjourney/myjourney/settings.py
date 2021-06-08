@@ -42,7 +42,6 @@ INSTALLED_APPS = [
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    '/var/www/static/',
 ]
 
 MIDDLEWARE = [
