@@ -7,6 +7,7 @@ from core.models import Profile, Subscriber
 class ProfileAdmin(admin.ModelAdmin):
     list_display = (
         "name",
+        "email"
     )
 
     search_fields = (
