@@ -1,56 +1,60 @@
 from django.shortcuts import render
 from django.views import View
 
-from core.models import Profile
+from core.models import Profile, Subscriber
 from core.forms import SubscriberForm
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, "index.html")
 
 
 class IndexView(View):
     def get(self, request):
-        name = Profile.objects.get(id=3).name
+        name = Profile.objects.all().first().name
+        email = Profile.objects.all().first().email
 
         form = SubscriberForm()
 
-        desc = 'I am an Agile Engineer.'
-        caption = 'Welcome to my Profile.'
-        title = 'Hello you,'
+        desc = "I am an Agile Engineer."
+        email = "Email: " + email
+        caption = "Welcome to my Profile."
+        title = "Hello you,"
 
         return render(
             request,
-            'index.html',
+            "index.html",
             {
-                'name': name,
-                'desc': desc,
-                'form': form,
-                'caption': caption,
-                'title': title,
-            }
+                "name": name,
+                "desc": desc,
+                "form": form,
+                "caption": caption,
+                "title": title,
+            },
         )
 
     def post(self, request):
-        name = Profile.objects.get(id=3).name
+        name = Profile.objects.all().first().name
+        email = Profile.objects.all().first().email
 
         form = SubscriberForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data.get("email")
-            Profile.objects.create(name=name, email=email)
+            Subscriber.objects.create(email=email)
 
-        desc = 'I am an Agile Engineer.'
-        caption = 'Welcome to my Profile.'
-        title = 'Hello you,'
+        desc = "I am an Agile Engineer."
+        email = "Email: " + email
+        caption = "Welcome to my Profile."
+        title = "Hello you,"
 
         return render(
             request,
-            'index.html',
+            "index.html",
             {
-                'name': name,
-                'desc': desc,
-                'form': form,
-                'caption': caption,
-                'title': title,
-            }
+                "name": name,
+                "desc": desc,
+                "form": form,
+                "caption": caption,
+                "title": title,
+            },
         )
